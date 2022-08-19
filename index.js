@@ -44,20 +44,7 @@ app.get("/tours", (req, res) => {
       },
       {
         type: "Stad",
-        name: 'Amsterdam Highlights',
-        duur: 4,
-        inhoud: 'Langere wandeling door het centrum. Over de Nieuwmarkt, het Waterlooplein, het Begijnenhof, de Dam, langs de grachten met de Westertoren en door de Jordaan.',
-        fotos: [
-          './img/Schreiers2.jpg',
-          './img/dewaag.jpg',
-          './img/wester.jpg',
-          './img/RijksmuseumAmsterdam-main.jpg',
-        ],
-        tbl: 'https://www.toursbylocals.com/AmsterdamWalkingTourhighlights',
-      },
-      {
-        type: "Stad",
-        name: 'Complete Amsterdam Day tour',
+        name: 'Complete Amsterdam Dag tour',
         duur: 7,
         inhoud: 'Centrum wandeling, Rondvaart, Anne Frank Museum, Jordaan en het Rijksmuseum in één. Boek ruim vantevoren!',
         fotos: [
@@ -72,10 +59,23 @@ app.get("/tours", (req, res) => {
         tbl: 'https://www.toursbylocals.com/canal-tour-amsterdam-with-museums',
       },
       {
+        type: "Stad",
+        name: 'Amsterdam Highlights',
+        duur: 4,
+        inhoud: 'Langere wandeling door het centrum. Over de Nieuwmarkt, het Waterlooplein, het Begijnenhof, de Dam, langs de grachten met de Westertoren en door de Jordaan.',
+        fotos: [
+          './img/Schreiers2.jpg',
+          './img/dewaag.jpg',
+          './img/wester.jpg',
+          './img/RijksmuseumAmsterdam-main.jpg',
+        ],
+        tbl: 'https://www.toursbylocals.com/AmsterdamWalkingTourhighlights',
+      },
+      {
         type: "Land",
         name: 'Langs de Amstel',
         duur: 4,
-        inhoud: 'Fietsen naar Oudekerk aan de Amstel met bezoek de Rembrandthoeve.',
+        inhoud: 'Fietsen naar Oudekerk aan de Amstel met bezoek de Rembrandthoeve. Alleen bij mooi weer natuurlijk, anders gaan we wandelen of het museum in!',
         fotos: [
           './img/ouderkerk aan de amstel.jpg',
           './img/fietsenAmstel01.jpg',
