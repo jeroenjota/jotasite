@@ -29,7 +29,7 @@ app.get("/tours", (req, res) => {
         type: "Stad",
         name: 'Jordaan Wandeling',
         duur: 3,
-        inhoud: 'Een wandeling door deze bijzondere buurt is altijd weer verrassend. Inclusief bezoek aan één of twee karakteristieke hofjes',
+        inhoud: 'Een wandeling door deze bijzondere buurt is altijd weer verrassend. Inclusief bezoek aan één of twee karakteristieke hofjes.',
         foto: './img/claeszhofje.jpg',
         tbl: 'https://www.toursbylocals.com/amsterdam-jordaan-walkingtour',
       },
