@@ -1,12 +1,17 @@
 mixin tour(tour)
   .card.mb-3.text-bg-light.border-info
-    .row
-      .col-md-4
-        a(href=tour.tbl  target="_blank")
-          img(class="list" src=tour.foto)
-      .col-md-8
-        .card-header.text-center.bg-light= tour.name
+    .row.align-items-center
+      - var id = tour.name
+      .col-5
+        .carousel.slide.carousel-fade(data-bs-ride="carousel" id=id)
+          .carousel-inner
+            each foto in tour.fotos
+              .carousel-item.active
+                img.list(src=foto)
+      .col-7
+        .card-header.text-center.bg-light
+          a(href=tour.tbl  target="_blank")= tour.name
         .card-body
           p.card-text.bg-light= tour.inhoud
-    .card-footer
-      p.text-end Duur: #{tour.duur} uur
+          p.text-end Duur: #{tour.duur} uur
+//- test

@@ -38,7 +38,9 @@ p {
 
 img.list{
   width:100%;
-  height: auto;
+  max-height: 220px;
+  margin-left: 10px;
+  /* height: auto; */
   overflow: hidden;
 }
 
