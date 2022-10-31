@@ -2,15 +2,42 @@ const express = require("express")
 const app = express()
 const path = require('path')
 const port = 3000
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const flash = require('express-flash');
+
 
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, "/views"))
 app.use(express.static(path.join(__dirname, 'public')))
+// Middleware for parsing
+
+// const middlewares = [
+//   layout(),
+//   express.static(path.join(__dirname, 'public')),
+//   express.urlencoded({ extended: true }),
+//   cookieParser(),
+//   session({
+//     secret: 'super-secret-key',
+//     key: 'super-secret-cookie',
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: { maxAge: 60000 }
+//   }),
+//   flash(),
+// ];
+
+
 
 // routes
 app.get("/", (req, res) => {
   let locals = { title: "Main" }
   res.render('index', locals)
+})
+
+app.get("/about", (req, res) => {
+  let locals = { title: "Jeroen" }
+  res.render('aboutme', locals)
 })
 
 app.get("/tours", (req, res) => {
@@ -44,6 +71,19 @@ app.get("/tours", (req, res) => {
       },
       {
         type: "Stad",
+        name: 'Amsterdam Highlights',
+        duur: 4,
+        inhoud: 'Wandeling door het centrum. Nieuwmarkt, Waterlooplein, Begijnenhof, Dam, langs de grachten, de Westertoren en door de Jordaan.',
+        fotos: [
+          './img/Schreiers2.jpg',
+          './img/dewaag.jpg',
+          './img/wester.jpg',
+          './img/RijksmuseumAmsterdam-main.jpg',
+        ],
+        tbl: 'https://www.toursbylocals.com/AmsterdamWalkingTourhighlights',
+      },
+      {
+        type: "Stad",
         name: 'Complete Amsterdam Dag tour',
         duur: 7,
         inhoud: 'Centrum wandeling, Rondvaart, Anne Frank Museum, Jordaan en het Rijksmuseum in één. Boek ruim vantevoren!',
@@ -59,23 +99,10 @@ app.get("/tours", (req, res) => {
         tbl: 'https://www.toursbylocals.com/canal-tour-amsterdam-with-museums',
       },
       {
-        type: "Stad",
-        name: 'Amsterdam Highlights',
-        duur: 4,
-        inhoud: 'Langere wandeling door het centrum. Over de Nieuwmarkt, het Waterlooplein, het Begijnenhof, de Dam, langs de grachten met de Westertoren en door de Jordaan.',
-        fotos: [
-          './img/Schreiers2.jpg',
-          './img/dewaag.jpg',
-          './img/wester.jpg',
-          './img/RijksmuseumAmsterdam-main.jpg',
-        ],
-        tbl: 'https://www.toursbylocals.com/AmsterdamWalkingTourhighlights',
-      },
-      {
         type: "Land",
         name: 'Langs de Amstel',
         duur: 4,
-        inhoud: 'Fietsen naar Oudekerk aan de Amstel met bezoek de Rembrandthoeve. Alleen bij mooi weer natuurlijk, anders gaan we wandelen of het museum in!',
+        inhoud: 'Fietsen naar Oudekerk aan de Amstel met bezoek aan de Rembrandthoeve. Bij regen gaan we wandelen of het museum in!',
         fotos: [
           './img/ouderkerk aan de amstel.jpg',
           './img/fietsenAmstel01.jpg',
@@ -88,7 +115,7 @@ app.get("/tours", (req, res) => {
         type: "Land",
         name: 'Fietsen naar de Zaanse Schans',
         duur: 5,
-        inhoud: 'Prachtige route door het Twiske naar de molens. Inclusief bezoek aan twee molens. Eventueel lunch (pannenkoeken!) en weer terug naar de grote stad.',
+        inhoud: 'Fietsen door het Twiske naar dit speciale dorp. Inclusief Bezoek aan twee molens. Eventueel lunch (pannenkoeken!).',
         fotos: [
           './img/twiske-amsterdam-2020-©-lily-heaton-3.jpg',
           './img/jongeschaap_1.jpg',
@@ -101,7 +128,7 @@ app.get("/tours", (req, res) => {
         type: "Land",
         name: 'Beemster tour',
         duur: 7,
-        inhoud: 'Met de auto naar de Zaanse Schans en de Museummolen in Schermerhorn. Lunchen in de Rijp en afsluitend bezoek aan kaasboerderij De Irenehoeve.',
+        inhoud: 'Met de auto naar de Zaanse Schans en de Museummolen in Schermerhorn. Lunch in de Rijp en bezoek aan kaasboerderij.',
         fotos: [
           './img/beemster001.jpg',
           './img/beemster002.jpg',
@@ -135,6 +162,21 @@ app.get("/tours", (req, res) => {
 
   // console.log(locals.tours)
   res.render('tours', locals)
+})
+
+app.post('/antwoord', (req, res) => {
+  const data = {
+    naam: req.body.naam,
+    email: req.body.email,
+    opmerking: req.body.opmerking
+  }
+  console.log(data.naam, data.email, data.opmerking)
+  if (data.naam > "" && data.email > "")
+    res.render('index', { msg: "Bericht is verstuurd." })
+  else {
+    res.render('index', { msg: "Controleer uw invoer" })
+  }
+
 })
 
 app.get("*", (req, res) => {

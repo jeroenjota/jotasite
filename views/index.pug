@@ -1,17 +1,38 @@
 extends layout.pug
 
 block content
-  .card.text-bg-light.border-info
+  .card.text-bg-light.mb-5
     .container
       h1.textcenter Welkom bij Jota
+
       h4 Wandelingen & tours binnen en buiten 
         a(href="https://www.amsterdam.nl" target="_blank") Amsterdam
+
       hr
       h5 Mijn tours kunnen worden geboekt via de website van ToursByLocals. 
       h5 Deze website is in het Engels, maar de tours kunnen in ook het Nederlands, Frans en Duits worden gegeven.
-      h6 Natuurlijk kun je goedkoper direct bij mij boeken: neem contact op  
-        a(href="mailto:info@jota.nl") via email
+      h5 Je kunt voor speciale wensen contact met mij opnemen  
+        a(href="mailto:info@jota.nl") via email 
+        //- | of via het antwoord formulier hieronder
       h4 
         a(href="/tours") klik hier 
         | voor een overzicht van mijn tours
       p (Klik op de titel van de tour voor meer informatie en eventueel directe -duurdere- boekingen.)
+      h5.text-end
+        a(href="/about") Over mij
+      //- .form
+      //-   h2 Opmerkingen en vragen
+      //-   if(msg)
+      //-     small=msg
+      //-   form(action="/antwoord", method="POST")
+      //-     label(for="naam") naam
+      //-     input#name(type="text", name="naam")
+      //-     label(for="email") email
+      //-     input#email(type="email", name="email")
+      //-     label(for="opmerking") Opmerking/Vraag
+      //-     textarea#opmerking(
+      //-       name="opmerking", 
+      //-       cols="30", rows="5"
+      //-     )
+      //-     button(type="submit") Verstuur
+

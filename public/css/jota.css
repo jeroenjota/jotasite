@@ -1,16 +1,25 @@
-body {
-  font-family: 'Lora'
+* {
+  margin: 0;
+  padding: 0;
 }
 
-h1, h2, h4 {
+
+body {
+  font-family: 'Lora';
+}
+
+h1,
+h2,
+h4 {
   font-family: 'Radley', serif;
 }
 
-h2, a {
+h2,
+a {
   text-decoration: none;
 }
 
-ul { 
+ul {
   font-size: 2rem;
   padding-inline-start: 0%;
 }
@@ -18,42 +27,106 @@ ul {
 li {
   font-size: 1.5rem;
   list-style: none;
-  font-style:normal;
+  font-style: normal;
 }
+
 p {
-  font-size:1rem;
+  font-size: 1rem;
 }
-.card{
+
+.transp {
+  opacity: .8;
+}
+
+.untransp {
+  opacity: 1;
+}
+
+.card .tour {
   color: black;
   text-shadow: none;
   opacity: .9;
-  height: 20%;
-
+  /* height: 20%; */
+  min-height: 200px;
+  max-height: 240px;
 }
- .large {
-   font-size: 6vw;
- }
+
+.large {
+  font-size: 4vw;
+}
 
 #footer {
   font-size: small;
   text-align: center;
 }
 
-.card img.list{
-  width:100%;
-  max-height: 180px;
+.card img.list {
+  width: 100%;
   /* height: 90%; */
   margin-left: 10px;
-  /* height: auto; */
+  height: auto;
   overflow: hidden;
+  margin: 10px;
 }
 
-.mainpage{
-  background: linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,.6)), url('../img/amsterdam012.jpg');
-  background-size:cover;
+.mainpage {
+  background: linear-gradient(rgba(255, 255, 255, .6), rgba(255, 255, 255, .6)), url('../img/amsterdam012.jpg');
+  background-size: cover;
   height: 100%;
   color: #022a99;
   /* text-shadow: 3px 5px 2px #474747; */
-  text-shadow: 4px 4px 2px rgba(233,225,225,0.6);
+  text-shadow: 4px 4px 2px rgba(255, 255, 255, 0.6);
 }
 
+.jotainfo {
+  text-shadow: 2px 2px 2px rgb(255, 255, 255);
+}
+
+.goog-logo-link {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  color: transparent !important;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* background: white; */
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0px 0px 6px 0px #808080b3;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form form input,
+.form form textarea {
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 20px;
+  outline: none;
+}
+
+.form form label {
+  margin-top: 7px;
+}
+
+.form button {
+  margin-top: 10px;
+  padding: 4px 10px;
+  font-size: 1rem;
+  border: 1px solid gray;
+  border-radius: 7px;
+  outline: none;
+  cursor: pointer;
+}
