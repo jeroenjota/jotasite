@@ -11,13 +11,12 @@ block content
       each tour in tours
         if tour.type==="Stad"
           li
-            +tour(tour)
-          p
+            +tour(tour, fotos)
     .col-lg-6.untransp
       ul Buiten de stad
       each tour in tours
         if tour.type!=="Stad"
           li
-            +tour(tour)
+            +tour(tour, fotos)
           p
 

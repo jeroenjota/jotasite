@@ -1,4 +1,4 @@
-mixin tour(tour)
+mixin tour(tour, fotos)
   .card.tour.mb-3.text-bg-light.border-info
     .card-header.bg
       .text-center.pt-6
@@ -8,9 +8,10 @@ mixin tour(tour)
       .col-5
         .carousel.slide.carousel-fade(data-bs-ride="carousel" id=id)
           .carousel-inner
-            each foto in tour.fotos
-              .carousel-item.active
-                img.list(src=foto)
+            each foto in fotos
+              if foto.tourID == tour.id
+                .carousel-item.active
+                  img.list(src=foto.foto)
       .col-7
         .card-body
           p.card-text.bg-light= tour.inhoud
