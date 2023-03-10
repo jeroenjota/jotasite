@@ -2,18 +2,18 @@ mixin tour(tour, fotos)
   .card.tour.mb-3.text-bg-light.border-info
     .card-header.bg
       .text-center.pt-6
-        a(href=tour.tbl  target="_blank")= tour.name
+        a(href=tour.tblLink  target="_blank")= tour.tournaam
     .row.align-items-center
-      - var id = tour.name
-      .col-5
+      - var id = tour.tournaam
+      .col-7
         .carousel.slide.carousel-fade(data-bs-ride="carousel" id=id)
           .carousel-inner
             each foto in fotos
               if foto.tourID == tour.id
                 .carousel-item.active
                   img.list(src=foto.foto)
-      .col-7
+      .col-5
         .card-body
-          p.card-text.bg-light= tour.inhoud
+          p.card-text.bg-light= tour.omschrijving
           p.text-end Duur: #{tour.duur} uur
 //- test

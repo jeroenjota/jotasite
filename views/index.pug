@@ -3,23 +3,25 @@ extends layout.pug
 block content
   .card.text-bg-light.mb-5
     .container
-      h1.textcenter Welkom bij Jota
+      .card-header 
+        h1.text-primary.text-center Welkom bij Jota's Amsterdam Tours
 
-      h4 Wandelingen & tours binnen en buiten 
-        a(href="https://www.amsterdam.nl" target="_blank") Amsterdam
+        h2.text-center Wandelingen & tours binnen en buiten Amsterdam
+      .card-body
+        p Jota geeft rondleidingen in Amsterdam, maar ook daarbuiten. Ik neem je graag mee naar de Zaanse Schans voor een bezoek aan de fantastische molens, naar de Museummolen in Schermerhorn, naar de prachtige Dam in Edam of een mooie wandeling in De Rijp. Of natuurlijk naar de Keukenhof in april en mei.
+        h4 Mijn tours kunnen worden geboekt via de website van ToursByLocals. 
+        h5 Die website is in het Engels, maar de tours worden ook in het Nederlands, Frans en Duits gegeven.
+        h4 Je kunt voor speciale wensen contact met mij opnemen  
+          a(href="mailto:info@jota.nl").text-secondary via email 
+        .row.border-top
+          .col
+            a(href="/conditions") Algemene voorwaarden
 
-      hr
-      h5 Mijn tours kunnen worden geboekt via de website van ToursByLocals. 
-      h5 Deze website is in het Engels, maar de tours kunnen in ook het Nederlands, Frans en Duits worden gegeven.
-      h5 Je kunt voor speciale wensen contact met mij opnemen  
-        a(href="mailto:info@jota.nl") via email 
-        //- | of via het antwoord formulier hieronder
-      h4 
-        a(href="/tours") klik hier 
-        | voor een overzicht van mijn tours
-      p (Klik op de titel van de tour voor meer informatie en eventueel directe -duurdere- boekingen.)
-      h5.text-end
-        a(href="/about") Over mij
+      //- | of via het antwoord formulier hieronder
+      //- h3 
+      //-   a(href="/tours") klik hier 
+      //-   | voor een overzicht van mijn tours
+      //- p (Klik op de titel van de tour voor meer informatie en eventueel directe -duurdere- boekingen.)
       //- .form
       //-   h2 Opmerkingen en vragen
       //-   if(msg)

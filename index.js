@@ -7,6 +7,7 @@ const session = require('express-session');
 const flash = require('express-flash');
 const db = require('./database')
 
+
 // de globale arrays met tour data
 // let tours = []
 // let fotos = []
@@ -17,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // routes
 app.get("/", (req, res) => {
-  let locals = { title: "Main" }
+  let locals = { title: "Home" }
   res.render('index', locals)
 })
 
@@ -26,19 +27,22 @@ app.get("/about", (req, res) => {
   res.render('aboutme', locals)
 })
 
+app.get("/conditions", (req, res) => {
+  let locals = { title: "Voorwaarden" }
+  res.render('voorwaarden', locals)
+})
+
 app.get("/tours", (req, res) => {
-  // open de recordsets tours en fotos vast bij openingspagina
-  let qryTours = "select t.id, t.name, t.duur, t.inhoud, t.type, t.tbl from tours t"
+  // open de recordsets tours en fotos 
+  // tours is een tabel
+  let qryTours = "select t.id, t.tournaam, t.duur, t.omschrijving, t.soort, t.tblLink "
+  qryTours += " from tours t where actief = true order by t.duur"
   db.query(qryTours, (err, tours) => {
     if (err) throw err;
-    // en vul het array tours
-    // tours = trs;
-    let qryFotos = "select * from tourfotos ORDER BY volgorde "
-    // qryFotos += "INNER JOIN fotos f ON l.fotoID = f.ID ORDER BY tourID, l.volgorde"
+    // tourfotos is een view 
+    let qryFotos = "select tourID, foto from tourfotos ORDER BY tourID, volgorde "
     db.query(qryFotos, (err, fotos) => {
       if (err) throw err;
-      // vul het array fotos
-      // fotos = fts
       let locals = {
         title: "Tours",
         tours: tours,

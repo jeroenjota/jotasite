@@ -2,33 +2,48 @@
 html(lang="en-US")
   head
     title Jota Services #{title}
-    link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet")
+    link(rel="icon" href="img/logo.jpg")
+
+    // font Awesome
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css')
+    // MD Bootstrap
+    link(rel='stylesheet' href='css/mdb.min.css')
     link(href="./css/jota.css" rel = "stylesheet")
-    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Lora&family=Radley")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond+Lora+Radley")
+    script(type='text/javascript' src='js/mdb.min.js')
+    script(type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit")    
+    // Custom scripts
+    script(type='text/javascript').
 
   body.mainpage
-    script(type="text/javascript") function googleTranslateElementInit() { new google.translate.TranslateElement( {pageLanguage: 'nl', autoDisplay:true, layout: google.translate.TranslateElement.InlineLayout.SIMPLE, includedLanguages:'nl,en,fr,de' }, 'google_translate_element' ) } 
-    script(type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit")
-
     .container
-      nav.navbar.navbar-expand
-        .container
-          h1.large Amsterdam tours
-          a(class='navbar-brand text-center' href="/") 
-            img(src="./img/logo.jpg")
-          div(width="160px").text-center
-            img(src="./img/vlaggen.jpg" width="30%")
-            span
-              #google_translate_element
-          //- select(id="langsel" onchange="loadlang()")
-          //-   option(value="nl") Nederlands
-          //-   option(value="en") English
+      nav.navbar.navbar-expand-lg.navbar-light.fixed-top.navbar-bg-color
+        .container-fluid
+          a.navbar-brand(href='#') 
+            img(src="./img/logo.jpg" width="80px")
+            h4 Amsterdam Tours
+          button.navbar-toggler(type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+            i(class="fas fa-bars")
+
+          .collapse.navbar-collapse#navbarSupportedContent
+            ul.navbar-nav.me.auto.mb-2.mb-lg-0
+              li.nav-item
+                a.nav-link(href='/') Home
+              li.nav-item
+                a.nav-link(href='/tours') Tours
+              li.nav-item
+                a.nav-link(href='/about') About
+        .d-flex.align-items-center
+          span
+            #google_translate_element
       main
         //- p #{tours.length}
         block content
 
-        block foot
-          #footer
-            p.small © 2022 Jota Services
-  script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js")
+  footer.text-center.text-muted.fixed-bottom.navbar-bg-color
+    .pt-3.text-center
+      p © #{new Date().getFullYear()} 
+        a(href="http://www.jota.nl") Jota Services
+  script.
+    function googleTranslateElementInit() { new google.translate.TranslateElement( {pageLanguage: 'nl', autoDisplay:false, layout: google.translate.TranslateElement.InlineLayout.SIMPLE, includedLanguages:'nl,en,fr,de' }, 'google_translate_element' ) } 
 
